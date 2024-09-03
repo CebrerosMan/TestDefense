@@ -24,7 +24,7 @@ public class PathInspector : Editor
 
 	private void OnSceneGUI()
 	{
-		if (m_Target.m_Points == null)
+		if (m_Target?.m_Points == null)
 			return;
 
 		Vector3 worldPosition = m_Transform.position;
@@ -38,6 +38,7 @@ public class PathInspector : Editor
 
 			point += handleEnd - handleStart;
 
+			Undo.RecordObject(m_Target, "Point Changed");
 			m_Target.m_Points[i] = point;
 		}
 	}
