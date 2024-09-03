@@ -6,7 +6,7 @@ using UnityEngine;
 namespace TD
 {
 	[ExecuteAlways]
-	public class Path : MonoBehaviour
+	public class Path : MonoBehaviour, IEnumerable<Vector3>
 	{
 		public List<Vector3> m_Points;
 
@@ -17,6 +17,17 @@ namespace TD
 		public Vector3 this[System.Index index]
 		{
 			get => m_Points[index] + m_transform.position;
+		}
+
+		public IEnumerator<Vector3> GetEnumerator()
+		{
+			for (int i = 0; i < Size; i++)
+				yield return this[i];
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 
 		private void Awake()

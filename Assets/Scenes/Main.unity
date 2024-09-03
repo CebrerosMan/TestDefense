@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14f958d20e85fe04994e1bcdb3a29fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_pathSegmentPrefab: {fileID: 4785886017549661257, guid: 8a7d40e923f4cf34483122747091246f, type: 3}
 --- !u!1 &737528549
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +489,7 @@ MonoBehaviour:
   m_spawner: {fileID: 2062215783}
   m_castlePrefab: {fileID: 8842316593202257065, guid: dc7f7f4504d08cf4f80c9f68802b7619, type: 3}
   m_camTransform: {fileID: 1253490172}
+  m_environment: {fileID: 205966953}
 --- !u!1 &1940962828
 GameObject:
   m_ObjectHideFlags: 0
