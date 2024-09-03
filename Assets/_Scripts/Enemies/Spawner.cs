@@ -7,9 +7,20 @@ namespace TD
 	{
 		public Path Path { private get; set; }
 
+		private Coroutine m_waveRoutine;
+
 		public void RunWave(WaveData waveData)
 		{
-			StartCoroutine(GameWave(waveData));
+			m_waveRoutine = StartCoroutine(GameWave(waveData));
+		}
+
+		public void Stop()
+		{
+			if(m_waveRoutine != null)
+			{
+				StopCoroutine(m_waveRoutine);
+				m_waveRoutine = null;
+			}
 		}
 
 		private IEnumerator GameWave(WaveData waveData)

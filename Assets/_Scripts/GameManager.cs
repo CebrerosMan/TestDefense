@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TD
@@ -13,6 +15,8 @@ namespace TD
 		[SerializeField] private Transform m_camTransform;
 		[SerializeField] private EnvironmentController m_environment;
 		[SerializeField] private Button m_startButton;
+		[SerializeField] private Button m_restartButton;
+		[SerializeField] private TextMeshProUGUI m_gameText;
 
 		private Castle m_castle;
 		private int m_enemyCount;
@@ -20,7 +24,9 @@ namespace TD
 		private void Awake()
 		{
 			Enemy.EnemyInitializedEvent += RegisterEnemy;
+
 			m_startButton.onClick.AddListener(StartGame);
+			m_restartButton.onClick.AddListener(RestartGame);
 			m_spawner.Path = m_path;
 			m_environment.Path = m_path;
 			m_enemyMovement.Path = m_path;
@@ -44,6 +50,11 @@ namespace TD
 			m_camTransform.position = camPos;
 		}
 
+		private void OnDestroy()
+		{
+			Enemy.EnemyInitializedEvent -= RegisterEnemy;
+		}
+
 		private void StartGame()
 		{
 			m_startButton.gameObject.SetActive(false);
@@ -52,25 +63,65 @@ namespace TD
 			m_enemyCount = m_waveData.m_Enemies.Count;
 		}
 
+		private void RestartGame()
+		{
+			SceneManager.LoadScene(0);
+		}
+
 		private void RegisterEnemy(Enemy enemy)
 		{
 			enemy.EnemyKilledEvent += OnEnemyKilled;
+			enemy.EnemyAttackedEvent += OnEnemyAttack;
+
 			m_enemyMovement.RegisterEnemy(enemy);
 		}
 
 		private void OnEnemyKilled(Enemy enemy)
 		{
-			enemy.EnemyKilledEvent -= OnEnemyKilled;
+			DestroyEnemy(enemy);
+			CheckWinCondition();	
+		}
+
+		private void OnEnemyAttack(Enemy enemy)
+		{
+			DestroyEnemy(enemy);
+			m_castle.Health -= enemy.Damage;
+
+			CheckWinCondition();
+		}
+
+		private void CheckWinCondition()
+		{
+			if(m_castle.Health <= 0)
+				Lose();
+			else if(m_enemyCount == 0)
+				Win();
+		}
+
+		private void DestroyEnemy(Enemy enemy)
+		{
 			m_enemyMovement.UnregisterEnemy(enemy);
-			
 			m_enemyCount--;
-			if (m_enemyCount == 0)
-				Win();	
+
+			Destroy(enemy.gameObject);
 		}
 
 		private void Win()
 		{
-			print("Congratz");
+			StopGame("You Win!");
+		}
+
+		private void Lose()
+		{
+			StopGame("You Lose...");
+		}
+
+		private void StopGame(string message)
+		{
+			m_gameText.text = message;
+			m_enemyMovement.enabled = false;
+			m_spawner.Stop();
+			m_restartButton.gameObject.SetActive(true);
 		}
 	}
 }

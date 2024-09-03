@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace TD
 {
 	public class Tower : MonoBehaviour
 	{
-		// Start is called before the first frame update
+		public TowerData m_Data;
+
 		void Start()
 		{
 

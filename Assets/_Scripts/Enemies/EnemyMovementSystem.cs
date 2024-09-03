@@ -15,7 +15,7 @@ namespace TD
 
 		public void RegisterEnemy(Enemy enemy)
 		{
-			m_movementData.Add(enemy, new EnemyMovementState());
+			m_movementData.Add(enemy, new EnemyMovementState(1));
 		}
 
 		public void UnregisterEnemy(Enemy enemy)
@@ -30,14 +30,14 @@ namespace TD
 					m_removeEnemies.Add(kvp.Key);
 
 			foreach (var enemy in m_removeEnemies)
-				m_movementData.Remove(enemy);
+				UnregisterEnemy(enemy);
 
 			m_removeEnemies.Clear();
 		}
 
 		private bool MoveEnemy(Enemy enemy, EnemyMovementState state, float deltaTime)
 		{
-			int index = state.m_PathIndex + 1;
+			int index = state.m_PathIndex;
 
 			try
 			{

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TD
 {
-	[CreateAssetMenu(fileName = "en_", menuName = "GameData/Enemy Data")]
+	[CreateAssetMenu(fileName = "en_", menuName = "Game Data/Enemy")]
 	public class EnemyData : ScriptableObject
 	{
 		public string m_DisplayName;

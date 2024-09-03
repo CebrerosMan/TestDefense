@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TD
 {
-	[CreateAssetMenu(fileName = "wv_", menuName = "GameData/Wave Data")]
+	[CreateAssetMenu(fileName = "wv_", menuName = "Game Data/Wave")]
 	public class WaveData : ScriptableObject
 	{
 		public float m_SpawnInterval;

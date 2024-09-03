@@ -20,7 +20,7 @@ namespace TD
 				Vector3 pathV = p2 - p1;
 
 				Vector3 pos = Vector3.Lerp(p1, p2, 0.5f);
-				pos.y = PATH_ELEVATION;
+				pos.y += PATH_ELEVATION;
 
 				GameObject pathSegment = Instantiate(m_pathSegmentPrefab, pos, Quaternion.LookRotation(pathV,Vector3.up),transform);
 
@@ -29,7 +29,7 @@ namespace TD
 
 				pathSegment.transform.localScale = scale;
 
-				p1.y = PATH_ELEVATION;
+				p1.y = p1.y + PATH_ELEVATION;
 				Instantiate(m_pathCornerPrefab, p1, Quaternion.identity, transform);
 			}
 		}

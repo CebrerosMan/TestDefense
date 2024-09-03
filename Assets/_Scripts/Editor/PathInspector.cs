@@ -8,7 +8,6 @@ using UnityEditor.UIElements;
 public class PathInspector : Editor
 {
 	private Path m_Target;
-	private Transform m_Transform;
 
 	public override VisualElement CreateInspectorGUI()
 	{
@@ -17,7 +16,6 @@ public class PathInspector : Editor
 		InspectorElement.FillDefaultInspector(root, serializedObject, this);
 
 		m_Target = (Path)target;
-		m_Transform = m_Target.transform;
 
 		return root;
 	}
@@ -27,7 +25,7 @@ public class PathInspector : Editor
 		if (m_Target?.m_Points == null)
 			return;
 
-		Vector3 worldPosition = m_Transform.position;
+		Vector3 worldPosition = m_Target.transform.position;
 
 		for (int i = 0; i < m_Target.Size; i++)
 		{
