@@ -5,11 +5,7 @@ namespace TD
 {
 	public class Spawner : MonoBehaviour
 	{
-		private Path m_path;
-		public Path Path
-		{
-			set => m_path = value;
-		}
+		public Path Path { private get; set; }
 
 		public void RunWave(WaveData waveData)
 		{
@@ -18,11 +14,11 @@ namespace TD
 
 		private IEnumerator GameWave(WaveData waveData)
 		{
-			for(int i = 0; i<waveData.m_Enemies.Count; i++)
+			for (int i = 0; i < waveData.m_Enemies.Count; i++)
 			{
 				EnemyData data = waveData.m_Enemies[i];
 
-				GameObject enemyGO = Instantiate(data.m_Prefab, m_path[0],Quaternion.identity,transform);
+				GameObject enemyGO = Instantiate(data.m_Prefab, Path[0], Quaternion.identity, transform);
 				Enemy enemy = enemyGO.GetComponent<Enemy>();
 				enemy.Initialize(data);
 

@@ -7,6 +7,7 @@ namespace TD
 	{
 		[SerializeField] private WaveData m_waveData;
 		[SerializeField] private Path m_path;
+		[SerializeField] private EnemyMovementSystem m_enemyMovement;
 		[SerializeField] private Spawner m_spawner;
 		[SerializeField] private GameObject m_castlePrefab;
 		[SerializeField] private Transform m_camTransform;
@@ -22,6 +23,7 @@ namespace TD
 			m_startButton.onClick.AddListener(StartGame);
 			m_spawner.Path = m_path;
 			m_environment.Path = m_path;
+			m_enemyMovement.Path = m_path;
 
 			//Spawn castle at the last point in the path, looking towards it
 			GameObject castleGO = Instantiate(m_castlePrefab, m_path[^1], Quaternion.LookRotation(m_path[^2] - m_path[^1], Vector3.up));
@@ -53,14 +55,15 @@ namespace TD
 		private void RegisterEnemy(Enemy enemy)
 		{
 			enemy.EnemyKilledEvent += OnEnemyKilled;
+			m_enemyMovement.RegisterEnemy(enemy);
 		}
 
 		private void OnEnemyKilled(Enemy enemy)
 		{
 			enemy.EnemyKilledEvent -= OnEnemyKilled;
-
+			m_enemyMovement.UnregisterEnemy(enemy);
+			
 			m_enemyCount--;
-
 			if (m_enemyCount == 0)
 				Win();	
 		}
