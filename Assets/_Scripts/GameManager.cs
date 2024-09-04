@@ -10,6 +10,7 @@ namespace TD
 		[SerializeField] private WaveData m_waveData;
 		[SerializeField] private Path m_path;
 		[SerializeField] private EnemyMovementSystem m_enemyMovement;
+		[SerializeField] private TowerAttackSystem m_towerAttack;
 		[SerializeField] private Spawner m_spawner;
 		[SerializeField] private GameObject m_castlePrefab;
 		[SerializeField] private Transform m_camTransform;
@@ -120,6 +121,7 @@ namespace TD
 		{
 			m_gameText.text = message;
 			m_enemyMovement.enabled = false;
+			m_towerAttack.enabled = false;
 			m_spawner.Stop();
 			m_restartButton.gameObject.SetActive(true);
 

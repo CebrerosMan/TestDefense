@@ -17,11 +17,11 @@ public class TowerInspector : Editor
 
 	private void OnSceneGUI()
 	{
-		if (!m_tower?.m_Data)
+		if (!m_tower?.Data)
 			return;
 
 		Vector3 towerPos = m_tower.transform.position;
-		float range = m_tower.m_Data.m_Range;
+		float range = m_tower.Data.m_Range;
 
 		Vector3 radiusV = Vector3.back * range;
 		Vector3 circumferencePoint = towerPos + radiusV;

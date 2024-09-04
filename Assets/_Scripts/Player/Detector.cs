@@ -8,6 +8,13 @@ namespace TD
 		public List<Enemy> m_enemies = new();
 
 		public Enemy Target { get; private set; }
+		public SphereCollider Collider { get; private set; }
+
+		private void Awake()
+		{
+			Collider = GetComponent<SphereCollider>();
+			Collider.enabled = false;
+		}
 
 		private void OnTriggerEnter(Collider other)
 		{

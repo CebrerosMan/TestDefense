@@ -9,6 +9,7 @@ namespace TD
 	{
 		public TowerData m_TowerData;
 		[SerializeField] private Camera m_cam;
+		[SerializeField] private TowerAttackSystem m_towerAttack;
 
 		private GameObject m_placedTower;
 		private Plane m_floorPlane;
@@ -71,7 +72,9 @@ namespace TD
 				for (int i = 0; i < m_meshRenderers.Count; i++)
 					m_meshRenderers[i].material.color = m_towerColors[i];
 
-				m_placedTower.GetComponent<Tower>().Initialize(m_TowerData);
+				Tower tower = m_placedTower.GetComponent<Tower>();
+				tower.Data = m_TowerData;
+				m_towerAttack.Register(tower);
 			}
 			else
 				Destroy(m_placedTower);
