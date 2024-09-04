@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc68420ea2757d844abc4ae84baf2461, type: 3}
   m_Name: tw_Balanced
   m_EditorClassIdentifier: 
-  m_Range: 1
+  m_Range: 3
