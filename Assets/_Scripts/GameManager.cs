@@ -122,6 +122,11 @@ namespace TD
 			m_enemyMovement.enabled = false;
 			m_spawner.Stop();
 			m_restartButton.gameObject.SetActive(true);
+
+			var towers = FindObjectsByType<Tower>(FindObjectsSortMode.None);
+
+			foreach (var tower in towers)
+				tower.enabled = false;
 		}
 	}
 }

@@ -12,23 +12,38 @@ namespace TD
 		private void OnTriggerEnter(Collider other)
 		{
 			if (other.gameObject.TryGetComponent(out Enemy enemy))
-				m_enemies.Add(enemy);
-
-			Target = m_enemies[0];
+				RegisterEnemy(enemy);
 		}
 
 		private void OnTriggerExit(Collider other)
 		{
 			if (other.gameObject.TryGetComponent(out Enemy enemy))
-			{
-				if (enemy == Target)
-					Target = null;
+				UnregisterEnemy(enemy);
+		}
 
-				m_enemies.Remove(enemy);
-			}
+		private void RegisterEnemy(Enemy enemy)
+		{
+			m_enemies.Add(enemy);
+			enemy.EnemyKilledEvent += OnEnemyKilled;
+
+			Target = m_enemies[0];
+		}
+
+		private void UnregisterEnemy(Enemy enemy)
+		{
+			m_enemies.Remove(enemy);
+			enemy.EnemyKilledEvent -= OnEnemyKilled;
+
+			if (enemy == Target)
+				Target = null;
 
 			if (m_enemies.Count > 0)
 				Target = m_enemies[0];
+		}
+
+		private void OnEnemyKilled(Enemy enemy)
+		{
+			UnregisterEnemy(enemy);
 		}
 	}
 }

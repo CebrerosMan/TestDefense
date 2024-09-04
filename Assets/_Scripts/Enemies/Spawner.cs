@@ -29,7 +29,7 @@ namespace TD
 			{
 				EnemyData data = waveData.m_Enemies[i];
 
-				GameObject enemyGO = Instantiate(data.m_Prefab, Path[0], Quaternion.identity, transform);
+				GameObject enemyGO = Instantiate(data.m_Prefab, Path[0], Quaternion.LookRotation(Path[1] - Path[0]), transform);
 				Enemy enemy = enemyGO.GetComponent<Enemy>();
 				enemy.Initialize(data);
 

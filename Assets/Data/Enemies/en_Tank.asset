@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc68420ea2757d844abc4ae84baf2461, type: 3}
-  m_Name: tw_Balanced
+  m_Script: {fileID: 11500000, guid: 65986de19606da84a97440025fc58368, type: 3}
+  m_Name: en_Tank
   m_EditorClassIdentifier: 
-  m_Damage: 1
-  m_Range: 3
-  m_FireRate: 2
-  m_Prefab: {fileID: 7977978265395722808, guid: e71aa5d1b7ac25a40971a22510ff82cc, type: 3}
+  m_DisplayName: Tank
+  m_Health: 10
+  m_Damage: 5
+  m_Speed: 2.5
+  m_Prefab: {fileID: 7343235299213195225, guid: 17802cd43de042c4fa9a933b00b5fd71, type: 3}

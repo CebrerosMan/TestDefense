@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TD
@@ -12,5 +10,7 @@ namespace TD
 
 		[Tooltip("Bullets per second")]
 		public int m_FireRate = 1;
+
+		public GameObject m_Prefab;
 	}
 }
