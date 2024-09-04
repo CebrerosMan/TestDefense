@@ -1016,7 +1016,7 @@ MonoBehaviour:
   m_waveData: {fileID: 11400000, guid: 75b9f16d7aa5f86429628b7d00a01392, type: 2}
   m_path: {fileID: 740965331}
   m_enemyMovement: {fileID: 455253472}
-  m_towerAttack: {fileID: 0}
+  m_towerAttack: {fileID: 969895531}
   m_spawner: {fileID: 2062215783}
   m_castlePrefab: {fileID: 8842316593202257065, guid: dc7f7f4504d08cf4f80c9f68802b7619, type: 3}
   m_camTransform: {fileID: 1253490172}
