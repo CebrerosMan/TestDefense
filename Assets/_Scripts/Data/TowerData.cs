@@ -8,8 +8,8 @@ namespace TD
 		public int m_Damage = 1;
 		public float m_Range = 1f;
 
-		[Tooltip("Bullets per second")]
-		public int m_FireRate = 1;
+		[Tooltip("Fire every x seconds")]
+		public float m_FireRate = 1;
 
 		public GameObject m_Prefab;
 	}

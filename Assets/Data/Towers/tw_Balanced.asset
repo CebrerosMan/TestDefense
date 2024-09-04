@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Damage: 1
   m_Range: 3
-  m_FireRate: 2
+  m_FireRate: 0.75
   m_Prefab: {fileID: 7977978265395722808, guid: e71aa5d1b7ac25a40971a22510ff82cc, type: 3}

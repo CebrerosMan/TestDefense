@@ -85,7 +85,7 @@ namespace TD
 		private void OnEnemyAttack(Enemy enemy)
 		{
 			DestroyEnemy(enemy);
-			m_castle.Health -= enemy.Damage;
+			m_castle.Health -= enemy.Data.m_Damage;
 
 			CheckWinCondition();
 		}

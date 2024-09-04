@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SpawnInterval: 2
   m_Enemies:
+  - {fileID: 11400000, guid: 6e41e59a16130b9429d2d607b92c31e2, type: 2}
   - {fileID: 11400000, guid: a637b55e6b7903a49a5516bfc666c3e9, type: 2}
+  - {fileID: 11400000, guid: 6e41e59a16130b9429d2d607b92c31e2, type: 2}
   - {fileID: 11400000, guid: a637b55e6b7903a49a5516bfc666c3e9, type: 2}
-  - {fileID: 11400000, guid: a637b55e6b7903a49a5516bfc666c3e9, type: 2}
-  - {fileID: 11400000, guid: a637b55e6b7903a49a5516bfc666c3e9, type: 2}
+  - {fileID: 11400000, guid: 6e41e59a16130b9429d2d607b92c31e2, type: 2}
+  - {fileID: 11400000, guid: 6e41e59a16130b9429d2d607b92c31e2, type: 2}
   - {fileID: 11400000, guid: a637b55e6b7903a49a5516bfc666c3e9, type: 2}
   - {fileID: 11400000, guid: a637b55e6b7903a49a5516bfc666c3e9, type: 2}

@@ -21,7 +21,7 @@ namespace TD
 		public void Initialize(TowerData data)
 		{
 			m_Data = data;
-			m_fireInterval = 1f / m_Data.m_FireRate;
+			m_fireInterval = m_Data.m_FireRate;
 			m_detectorCollider.radius = m_Data.m_Range;
 			m_detectorCollider.enabled = true;
 

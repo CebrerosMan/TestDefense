@@ -12,19 +12,15 @@ namespace TD
 
 		private Transform m_transform;
 		private int m_health;
-		private int m_maxHealth;
 
 		public Transform Transform => m_transform;
-		public float Speed { get; private set; }
-		public int Damage { get; private set; }
+		public EnemyData Data { get; private set; }
 
 		public void Initialize(EnemyData data)
 		{
+			Data = data;
 			m_transform = transform;
 			m_health = data.m_Health;
-			m_maxHealth = data.m_Health;
-			Damage = data.m_Damage;
-			Speed = data.m_Speed;
 
 			EnemyInitializedEvent?.Invoke(this);
 		}

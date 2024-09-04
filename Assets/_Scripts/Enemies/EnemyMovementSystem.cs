@@ -26,7 +26,7 @@ namespace TD
 		private void Update()
 		{
 			foreach (var kvp in m_movementData)
-				if(!MoveEnemy(kvp.Key, kvp.Value, Time.deltaTime))
+				if (!MoveEnemy(kvp.Key, kvp.Value, Time.deltaTime))
 					m_removeEnemies.Add(kvp.Key);
 
 			foreach (var enemy in m_removeEnemies)
@@ -43,9 +43,12 @@ namespace TD
 			{
 				Vector3 target = Path[index];
 
-				Vector3 newPos = Vector3.MoveTowards(enemy.Transform.position, target, deltaTime * enemy.Speed);
+				Vector3 newPos = Vector3.MoveTowards(enemy.Transform.position, target, deltaTime * enemy.Data.m_Speed);
+				Quaternion rotation = enemy.Transform.localRotation;
+				Quaternion targetRot = Quaternion.LookRotation(Path[index] - Path[index - 1]);
 
 				enemy.Transform.position = newPos;
+				enemy.Transform.localRotation = Quaternion.Slerp(rotation, targetRot, deltaTime * enemy.Data.m_RotationSpeed);
 
 				if (Vector3.SqrMagnitude(target - newPos) < SEGMENT_THRESHOLD)
 					state.m_PathIndex++;
